@@ -14,14 +14,14 @@ jobs:
       - name: Set up gcloud
         uses: google-github-actions/auth@v0
         with:
-          credentials_json: ${{ secrets.BUSCA_MED }}
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Create secrets directory
         run: mkdir -p /secrets
 
       - name: Copy service account key
         run: |
-          echo "${{ secrets.BUSCA_MED }}" > /secrets/service_account_key.json
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > /secrets/service_account_key.json
 
       - name: Build and push Docker image
         run: |
