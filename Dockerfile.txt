@@ -1,4 +1,4 @@
-FROM python:3.9-slim-buster
+FROM python:3.12-slim-buster
 
 WORKDIR /app
 
@@ -9,7 +9,8 @@ COPY . .
 
 EXPOSE 8080
 
-ENV FLASK_APP=app.py 
-ENV BUSCA_MED=/secrets/service_account_key.json
+ENV FLASK_APP=app.py
+ENV GOOGLE_APPLICATION_CREDENTIALS=/secrets/service_account_key.json
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"] #replace app:app if needed
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+
