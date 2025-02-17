@@ -1,0 +1,1266 @@
+[
+  {
+    "subgrupo": 1,
+    "descricao": "CONSULTAS, VISITAS HOSPITALARES OU ACOMPANHAMENTO DE PACIENTES",
+    "especialidadesAssociadas": [
+      "Clínica Médica",
+      "Pediatria",
+      "Cirurgia Geral",
+      "Ginecologia/Obstetrícia",
+      "Cardiologia",
+      "etc."
+    ]
+  },
+  {
+    "subgrupo": 2,
+    "descricao": "AVALIAÇÕES/ACOMPANHAMENTOS",
+    "especialidadesAssociadas": [
+      "Clínica Médica (avaliações iniciais)",
+      "Neurologia",
+      "Reumatologia",
+      "Demais especialidades, conforme necessidade"
+    ]
+  },
+  {
+    "subgrupo": 3,
+    "descricao": "PROCEDIMENTOS",
+    "especialidadesAssociadas": [
+      "Cirurgia Geral",
+      "Clínica Médica (procedimentos ambulatoriais)",
+      "Dermatologia (pequenos procedimentos)",
+      "Todas as áreas cirúrgicas e não cirúrgicas"
+    ]
+  },
+  {
+    "subgrupo": 4,
+    "descricao": "ORELHA INTERNA",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Neurocirurgia (casos específicos em cirurgia de base de crânio)"
+    ]
+  },
+  {
+    "subgrupo": 5,
+    "descricao": "SISTEMA NERVOSO",
+    "especialidadesAssociadas": [
+      "Neurologia",
+      "Neurocirurgia",
+      "Psiquiatria (aspectos funcionais, menos invasiva)"
+    ]
+  },
+  {
+    "subgrupo": 6,
+    "descricao": "ENCÉFALO",
+    "especialidadesAssociadas": [
+      "Neurocirurgia",
+      "Neurologia (diagnóstico, acompanhamento e procedimentos minimamente invasivos)"
+    ]
+  },
+  {
+    "subgrupo": 7,
+    "descricao": "MEDULA",
+    "especialidadesAssociadas": [
+      "Neurocirurgia (cirurgias na medula espinhal)",
+      "Neurologia (diagnóstico, punções lombares)",
+      "Ortopedia (procedimentos na coluna)"
+    ]
+  },
+  {
+    "subgrupo": 8,
+    "descricao": "NERVOS PERIFÉRICOS",
+    "especialidadesAssociadas": [
+      "Neurocirurgia",
+      "Ortopedia (cirurgia de nervos em membros)",
+      "Neurologia (diagnóstico, acompanhamento de neuropatias)"
+    ]
+  },
+  {
+    "subgrupo": 9,
+    "descricao": "MONITORIZAÇÕES",
+    "especialidadesAssociadas": [
+      "Anestesiologia (monitorização intraoperatória)",
+      "Terapia Intensiva (médicos intensivistas)",
+      "Neurocirurgia (monitorização neurológica intraoperatória)",
+      "Cardiologia (monitorização hemodinâmica)"
+    ]
+  },
+  {
+    "subgrupo": 10,
+    "descricao": "REABILITAÇÃO",
+    "especialidadesAssociadas": [
+      "Fisioterapia, Fonoaudiologia, Terapia Ocupacional",
+      "Medicina Física e Reabilitação (Fisiatria)",
+      "Ortopedia (reabilitação de lesões musculoesqueléticas)",
+      "Neurologia (reabilitação de AVC, lesões medulares, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 11,
+    "descricao": "TERAPÊUTICA",
+    "especialidadesAssociadas": [
+      "Todas as áreas que realizam terapias (farmacológicas, físicas, cirúrgicas, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 12,
+    "descricao": "MÉTODOS INTERVENCIONISTAS DIAGNÓSTICOS E TERAPÊUTICOS POR IMAGEM",
+    "especialidadesAssociadas": [
+      "Radiologia e Diagnóstico por Imagem (Radiologia Intervencionista)",
+      "Cardiologia Intervencionista (cateterismos e procedimentos específicos)"
+    ]
+  },
+  {
+    "subgrupo": 13,
+    "descricao": "ORELHA MÉDIA",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia"
+    ]
+  },
+  {
+    "subgrupo": 14,
+    "descricao": "RADIOGRAFIAS",
+    "especialidadesAssociadas": [
+      "Radiologia e Diagnóstico por Imagem"
+    ]
+  },
+  {
+    "subgrupo": 15,
+    "descricao": "CIRURGIA LINFÁTICA",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular (subespecialidades de linfáticos)",
+      "Cirurgia Geral (procedimentos oncológicos em linfonodos)",
+      "Cirurgia Plástica (cirurgias reparadoras envolvendo linfáticos)"
+    ]
+  },
+  {
+    "subgrupo": 16,
+    "descricao": "PÁLPEBRA",
+    "especialidadesAssociadas": [
+      "Oftalmologia",
+      "Cirurgia Plástica (cirurgia estética ou reparadora de pálpebras)"
+    ]
+  },
+  {
+    "subgrupo": 17,
+    "descricao": "TENDÕES, BURSAS E SINÓVIAS",
+    "especialidadesAssociadas": [
+      "Ortopedia",
+      "Reumatologia (diagnósticos, infiltrações)"
+    ]
+  },
+  {
+    "subgrupo": 18,
+    "descricao": "BOCA",
+    "especialidadesAssociadas": [
+      "Cirurgia de Cabeça e Pescoço",
+      "Odontologia (Dentista, Cirurgia Bucomaxilofacial)",
+      "Estomatologia"
+    ]
+  },
+  {
+    "subgrupo": 19,
+    "descricao": "MANDÍBULA E MAXILA",
+    "especialidadesAssociadas": [
+      "Cirurgia Bucomaxilofacial",
+      "Odontologia",
+      "Cirurgia de Cabeça e Pescoço"
+    ]
+  },
+  {
+    "subgrupo": 20,
+    "descricao": "SEIOS PARANASAIS",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia de Cabeça e Pescoço (casos oncológicos)"
+    ]
+  },
+  {
+    "subgrupo": 21,
+    "descricao": "CIRURGIA REPARADORA E FUNCIONAL DA FACE",
+    "especialidadesAssociadas": [
+      "Cirurgia Plástica",
+      "Cirurgia de Cabeça e Pescoço",
+      "Otorrinolaringologia (rinoplastias funcionais)",
+      "Odontologia (Bucomaxilofacial)"
+    ]
+  },
+  {
+    "subgrupo": 22,
+    "descricao": "LÁBIO",
+    "especialidadesAssociadas": [
+      "Cirurgia Plástica",
+      "Cirurgia de Cabeça e Pescoço",
+      "Bucomaxilofacial"
+    ]
+  },
+  {
+    "subgrupo": 23,
+    "descricao": "LÍNGUA",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia de Cabeça e Pescoço"
+    ]
+  },
+  {
+    "subgrupo": 24,
+    "descricao": "GLÂNDULAS SALIVARES",
+    "especialidadesAssociadas": [
+      "Cirurgia de Cabeça e Pescoço",
+      "Otorrinolaringologia"
+    ]
+  },
+  {
+    "subgrupo": 25,
+    "descricao": "FARINGE",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia de Cabeça e Pescoço"
+    ]
+  },
+  {
+    "subgrupo": 26,
+    "descricao": "LARINGE",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia de Cabeça e Pescoço"
+    ]
+  },
+  {
+    "subgrupo": 27,
+    "descricao": "TRAUMA CRÂNIO-MAXILO-FACIAL",
+    "especialidadesAssociadas": [
+      "Cirurgia Bucomaxilofacial",
+      "Cirurgia Plástica",
+      "Cirurgia de Cabeça e Pescoço",
+      "Ortopedia (em emergências de politrauma)"
+    ]
+  },
+  {
+    "subgrupo": 28,
+    "descricao": "PROCEDIMENTOS GERAIS",
+    "especialidadesAssociadas": [
+      "Cirurgia Geral (ampla gama de procedimentos)"
+    ]
+  },
+  {
+    "subgrupo": 29,
+    "descricao": "FACE",
+    "especialidadesAssociadas": [
+      "Cirurgia Plástica",
+      "Otorrinolaringologia",
+      "Cirurgia de Cabeça e Pescoço"
+    ]
+  },
+  {
+    "subgrupo": 30,
+    "descricao": "PESCOÇO",
+    "especialidadesAssociadas": [
+      "Cirurgia de Cabeça e Pescoço",
+      "Cirurgia Geral (urgências ou cirurgias de tireoide)"
+    ]
+  },
+  {
+    "subgrupo": 31,
+    "descricao": "PARATIREÓIDE",
+    "especialidadesAssociadas": [
+      "Cirurgia de Cabeça e Pescoço",
+      "Cirurgia Geral (cirurgia endócrina)",
+      "Endocrinologia (diagnósticos, mas cirurgia é com cirurgiões habilitados)"
+    ]
+  },
+  {
+    "subgrupo": 32,
+    "descricao": "CIRURGIA ARTERIAL",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "subgrupo": 33,
+    "descricao": "TIREÓIDE",
+    "especialidadesAssociadas": [
+      "Cirurgia de Cabeça e Pescoço",
+      "Cirurgia Geral (subespecialidade em cirurgia endócrina)",
+      "Endocrinologia (diagnóstico, biópsias por agulha fina)"
+    ]
+  },
+  {
+    "subgrupo": 34,
+    "descricao": "CRÂNIO",
+    "especialidadesAssociadas": [
+      "Neurocirurgia"
+    ]
+  },
+  {
+    "subgrupo": 35,
+    "descricao": "CAVIDADE ORBITÁRIA",
+    "especialidadesAssociadas": [
+      "Oftalmologia",
+      "Cirurgia Plástica (em alguns casos de cirurgia orbitária)"
+    ]
+  },
+  {
+    "subgrupo": 36,
+    "descricao": "CONJUNTIVA",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 37,
+    "descricao": "CÓRNEA",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 38,
+    "descricao": "CÂMARA ANTERIOR",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 39,
+    "descricao": "CRISTALINO",
+    "especialidadesAssociadas": [
+      "Oftalmologia (cirurgia de catarata)"
+    ]
+  },
+  {
+    "subgrupo": 40,
+    "descricao": "ÍRIS E CORPO CILIAR",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 41,
+    "descricao": "CORPO VÍTREO",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 42,
+    "descricao": "ESCLERA",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 43,
+    "descricao": "BULBO OCULAR",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 44,
+    "descricao": "MÚSCULOS",
+    "especialidadesAssociadas": [
+      "Ortopedia (lesões músculo-tendíneas)",
+      "Reumatologia (diagnóstico/tratamento de inflamações)",
+      "Medicina Física e Reabilitação (acompanhamentos)"
+    ]
+  },
+  {
+    "subgrupo": 45,
+    "descricao": "MÚSCULOS E FASCIAS",
+    "especialidadesAssociadas": [
+      "Ortopedia",
+      "Cirurgia Plástica (cirurgias reparadoras)",
+      "Fisiatria"
+    ]
+  },
+  {
+    "subgrupo": 46,
+    "descricao": "RETINA",
+    "especialidadesAssociadas": [
+      "Oftalmologia (retinologia)"
+    ]
+  },
+  {
+    "subgrupo": 47,
+    "descricao": "VIAS LACRIMAIS",
+    "especialidadesAssociadas": [
+      "Oftalmologia"
+    ]
+  },
+  {
+    "subgrupo": 48,
+    "descricao": "PAVILHÃO AURICULAR",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia Plástica (cirurgias estéticas de orelha)"
+    ]
+  },
+  {
+    "subgrupo": 49,
+    "descricao": "ORELHA EXTERNA",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia"
+    ]
+  },
+  {
+    "subgrupo": 50,
+    "descricao": "NARIZ",
+    "especialidadesAssociadas": [
+      "Otorrinolaringologia",
+      "Cirurgia Plástica (rinoplastia)"
+    ]
+  },
+  {
+    "subgrupo": 51,
+    "descricao": "PAREDE TORÁCICA",
+    "especialidadesAssociadas": [
+      "Cirurgia Torácica",
+      "Cirurgia Plástica (reconstruções)"
+    ]
+  },
+  {
+    "subgrupo": 52,
+    "descricao": "MAMAS",
+    "especialidadesAssociadas": [
+      "Mastologia",
+      "Cirurgia Geral (subespecialidade em Mastologia)",
+      "Cirurgia Plástica (reparadora ou estética)",
+      "Ginecologia (em conjunto com mastologistas)"
+    ]
+  },
+  {
+    "subgrupo": 53,
+    "descricao": "AUTOTRANSPLANTES OSTEOMIOCUTÂNEOS",
+    "especialidadesAssociadas": [
+      "Cirurgia Plástica",
+      "Ortopedia (enxertos ósseos)"
+    ]
+  },
+  {
+    "subgrupo": 54,
+    "descricao": "TRANSPLANTES, REIMPLANTES E REVASCULARIZAÇÕES DOS MEMBROS",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular",
+      "Cirurgia Plástica (microcirurgia)",
+      "Ortopedia (reimplantes de partes de membros)"
+    ]
+  },
+  {
+    "subgrupo": 55,
+    "descricao": "TRAÇÃO",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 56,
+    "descricao": "RETIRADA DE MATERIAL DE SÍNTESE",
+    "especialidadesAssociadas": [
+      "Ortopedia (principal)",
+      "Cirurgia Geral (se o material for de cirurgia abdominal, por exemplo)"
+    ]
+  },
+  {
+    "subgrupo": 57,
+    "descricao": "MEMBROS INFERIORES",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 58,
+    "descricao": "CINTURA PÉLVICA",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 59,
+    "descricao": "ARTICULAÇÃO ESCÁPULO-UMERAL E CINTURA ESCAPULAR",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 60,
+    "descricao": "IMOBILIZAÇÕES",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 61,
+    "descricao": "ARTROSCOPIA",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 62,
+    "descricao": "COLUNA VERTEBRAL",
+    "especialidadesAssociadas": [
+      "Ortopedia (cirurgia de coluna)",
+      "Neurocirurgia (cirurgia de coluna)"
+    ]
+  },
+  {
+    "subgrupo": 63,
+    "descricao": "MEMBROS SUPERIORES",
+    "especialidadesAssociadas": [
+      "Ortopedia"
+    ]
+  },
+  {
+    "subgrupo": 64,
+    "descricao": "TRAQUÉIA",
+    "especialidadesAssociadas": [
+      "Cirurgia Torácica",
+      "Otorrinolaringologia (em algumas cirurgias)"
+    ]
+  },
+  {
+    "subgrupo": 65,
+    "descricao": "BRÔNQUIOS",
+    "especialidadesAssociadas": [
+      "Pneumologia (broncoscopia diagnóstica)",
+      "Cirurgia Torácica"
+    ]
+  },
+  {
+    "subgrupo": 66,
+    "descricao": "PULMÃO",
+    "especialidadesAssociadas": [
+      "Pneumologia",
+      "Cirurgia Torácica"
+    ]
+  },
+  {
+    "subgrupo": 67,
+    "descricao": "PLEURA",
+    "especialidadesAssociadas": [
+      "Pneumologia",
+      "Cirurgia Torácica"
+    ]
+  },
+  {
+    "subgrupo": 68,
+    "descricao": "MEDIASTINO",
+    "especialidadesAssociadas": [
+      "Cirurgia Torácica",
+      "Cirurgia Cardiovascular (dependendo da região)"
+    ]
+  },
+  {
+    "subgrupo": 69,
+    "descricao": "DIAFRAGMA",
+    "especialidadesAssociadas": [
+      "Cirurgia Torácica",
+      "Cirurgia Geral (procedimentos abdominais envolvendo o diafragma)"
+    ]
+  },
+  {
+    "subgrupo": 70,
+    "descricao": "DEFEITOS CARDÍACOS CONGÊNITOS",
+    "especialidadesAssociadas": [
+      "Cardiologia Pediátrica",
+      "Cirurgia Cardiovascular"
+    ]
+  },
+  {
+    "subgrupo": 71,
+    "descricao": "HEMODINÂMICA – CARDIOLOGIA INTERVENCIONISTA",
+    "especialidadesAssociadas": [
+      "Cardiologia (Hemodinâmica)"
+    ]
+  },
+  {
+    "subgrupo": 72,
+    "descricao": "VALVOPATIAS",
+    "especialidadesAssociadas": [
+      "Cardiologia",
+      "Cirurgia Cardiovascular"
+    ]
+  },
+  {
+    "subgrupo": 73,
+    "descricao": "CORONARIOPATIAS",
+    "especialidadesAssociadas": [
+      "Cardiologia",
+      "Cirurgia Cardiovascular"
+    ]
+  },
+  {
+    "subgrupo": 74,
+    "descricao": "MARCA-PASSO",
+    "especialidadesAssociadas": [
+      "Cardiologia",
+      "Cirurgia Cardiovascular (implante de marcapasso)"
+    ]
+  },
+  {
+    "subgrupo": 75,
+    "descricao": "OUTROS PROCEDIMENTOS",
+    "especialidadesAssociadas": [
+      "Variadas especialidades, conforme o tipo de procedimento"
+    ]
+  },
+  {
+    "subgrupo": 76,
+    "descricao": "CIRURGIA VENOSA",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "subgrupo": 77,
+    "descricao": "FÍSTULAS ARTERIOVENOSAS CONGÊNITAS OU ADQUIRIDAS",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "subgrupo": 78,
+    "descricao": "HEMODIÁLISE DE CURTA E LONGA PERMANÊNCIA",
+    "especialidadesAssociadas": [
+      "Nefrologia",
+      "Cirurgia Vascular (criação de fístulas de diálise)"
+    ]
+  },
+  {
+    "subgrupo": 79,
+    "descricao": "CIRURGIA VASCULAR DE URGÊNCIA",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular"
+    ]
+  },
+  {
+    "subgrupo": 80,
+    "descricao": "ACESSOS VASCULARES",
+    "especialidadesAssociadas": [
+      "Cirurgia Vascular",
+      "Radiologia Intervencionista (em alguns casos)"
+    ]
+  },
+  {
+    "subgrupo": 81,
+    "descricao": "PERICÁRDIO",
+    "especialidadesAssociadas": [
+      "Cardiologia",
+      "Cirurgia Cardiovascular"
+    ]
+  },
+  {
+    "subgrupo": 82,
+    "descricao": "HIPOTERMIA",
+    "especialidadesAssociadas": [
+      "Cirurgia Cardiovascular (uso em cirurgias cardíacas específicas)",
+      "Anestesiologia (controle intraoperatório)"
+    ]
+  },
+  {
+    "subgrupo": 83,
+    "descricao": "MIOCÁRDIO",
+    "especialidadesAssociadas": [
+      "Cardiologia",
+      "Cirurgia Cardiovascular"
+    ]
+  },
+  {
+    "subgrupo": 84,
+    "descricao": "ESÔFAGO",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo",
+      "Cirurgia Geral (subespecialidade em esôfago)"
+    ]
+  },
+  {
+    "subgrupo": 85,
+    "descricao": "ESTÔMAGO",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo",
+      "Cirurgia Geral"
+    ]
+  },
+  {
+    "subgrupo": 86,
+    "descricao": "INTESTINOS",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo",
+      "Coloproctologia (intestino grosso e reto)"
+    ]
+  },
+  {
+    "subgrupo": 87,
+    "descricao": "ÂNUS",
+    "especialidadesAssociadas": [
+      "Coloproctologia"
+    ]
+  },
+  {
+    "subgrupo": 88,
+    "descricao": "FÍGADO E VIAS BILIARES",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo (Hepatobiliopancreática)",
+      "Hepatologia (clínica, em diagnósticos/procedimentos menores)"
+    ]
+  },
+  {
+    "subgrupo": 89,
+    "descricao": "ABDOME, PAREDE E CAVIDADE",
+    "especialidadesAssociadas": [
+      "Cirurgia Geral",
+      "Cirurgia do Aparelho Digestivo"
+    ]
+  },
+  {
+    "subgrupo": 90,
+    "descricao": "PÂNCREAS",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo (Hepatobiliopancreática)"
+    ]
+  },
+  {
+    "subgrupo": 91,
+    "descricao": "BAÇO",
+    "especialidadesAssociadas": [
+      "Cirurgia do Aparelho Digestivo",
+      "Cirurgia Geral (traumas ou esplenectomias eletivas)"
+    ]
+  },
+  {
+    "subgrupo": 92,
+    "descricao": "PERITÔNIO",
+    "especialidadesAssociadas": [
+      "Cirurgia Geral",
+      "Cirurgia do Aparelho Digestivo"
+    ]
+  },
+  {
+    "subgrupo": 93,
+    "descricao": "VULVA",
+    "especialidadesAssociadas": [
+      "Ginecologia (cirurgia ginecológica)"
+    ]
+  },
+  {
+    "subgrupo": 94,
+    "descricao": "RIM, BACINETE E SUPRA-RENAL",
+    "especialidadesAssociadas": [
+      "Urologia (rim e bacinete)",
+      "Nefrologia (aspecto clínico)",
+      "Cirurgia Geral ou Cirurgia Vascular (revascularização de rim)",
+      "Cirurgia de Cabeça e Pescoço ou Cirurgia Geral (suprarrenal, cirurgia endócrina)"
+    ]
+  },
+  {
+    "subgrupo": 95,
+    "descricao": "URETER",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 96,
+    "descricao": "BEXIGA",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 97,
+    "descricao": "ENDOSCOPIA DIAGNÓSTICA OU INTERVENCIONISTA",
+    "especialidadesAssociadas": [
+      "Gastroenterologia (endoscopia digestiva)",
+      "Pneumologia (broncoscopia)",
+      "Urologia (cistoscopia)",
+      "Ginecologia (histeroscopia)",
+      "Outras subespecialidades endoscópicas"
+    ]
+  },
+  {
+    "subgrupo": 98,
+    "descricao": "URETRA",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 99,
+    "descricao": "PRÓSTATA E VESÍCULAS SEMINAIS",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 100,
+    "descricao": "ESCROTO",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 101,
+    "descricao": "TESTÍCULO",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 102,
+    "descricao": "EPIDÍDIMO",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 103,
+    "descricao": "CORDÃO ESPERMÁTICO",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 104,
+    "descricao": "PÊNIS",
+    "especialidadesAssociadas": [
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 105,
+    "descricao": "VAGINA",
+    "especialidadesAssociadas": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "subgrupo": 106,
+    "descricao": "PARTOS E OUTROS PROCEDIMENTOS OBSTÉTRICOS",
+    "especialidadesAssociadas": [
+      "Ginecologia e Obstetrícia"
+    ]
+  },
+  {
+    "subgrupo": 107,
+    "descricao": "ÚTERO",
+    "especialidadesAssociadas": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "subgrupo": 108,
+    "descricao": "TUBAS",
+    "especialidadesAssociadas": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "subgrupo": 109,
+    "descricao": "OVÁRIOS",
+    "especialidadesAssociadas": [
+      "Ginecologia"
+    ]
+  },
+  {
+    "subgrupo": 110,
+    "descricao": "PERÍNEO",
+    "especialidadesAssociadas": [
+      "Ginecologia (cirurgias de correção de prolapsos, episiotomias)",
+      "Coloproctologia (fístulas reto-vaginais, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 111,
+    "descricao": "CAVIDADE E PAREDES PÉLVICAS",
+    "especialidadesAssociadas": [
+      "Cirurgia Geral",
+      "Ginecologia",
+      "Urologia"
+    ]
+  },
+  {
+    "subgrupo": 112,
+    "descricao": "ULTRASSONOGRAFIA INTERVENCIONISTA",
+    "especialidadesAssociadas": [
+      "Radiologia Intervencionista",
+      "Parcerias com Gastro, Ginecologia, Urologia, etc."
+    ]
+  },
+  {
+    "subgrupo": 113,
+    "descricao": "PROCEDIMENTOS SECUNDÁRIOS",
+    "especialidadesAssociadas": [
+      "Diversas especialidades, conforme tipo de procedimento"
+    ]
+  },
+  {
+    "subgrupo": 114,
+    "descricao": "NERVOS CRANIANOS",
+    "especialidadesAssociadas": [
+      "Neurologia (diagnóstico)",
+      "Neurocirurgia (procedimentos cirúrgicos)"
+    ]
+  },
+  {
+    "subgrupo": 115,
+    "descricao": "SISTEMA NERVOSO AUTÔNOMO",
+    "especialidadesAssociadas": [
+      "Neurologia",
+      "Neurocirurgia (procedimentos funcionais, simpatectomias)"
+    ]
+  },
+  {
+    "subgrupo": 116,
+    "descricao": "RIM (repetido em parte do 95)",
+    "especialidadesAssociadas": [
+      "Urologia",
+      "Nefrologia"
+    ]
+  },
+  {
+    "subgrupo": 117,
+    "descricao": "BLOQUEIOS ANESTÉSICOS DE NERVOS E ESTÍMULOS NEUROVASCULARES",
+    "especialidadesAssociadas": [
+      "Anestesiologia (bloqueios regionais)",
+      "Neurocirurgia (bloqueios ou ablações funcionais)",
+      "Medicina da Dor (subespecialidade)"
+    ]
+  },
+  {
+    "subgrupo": 118,
+    "descricao": "ECG – TE (eletrocardiograma, teste ergométrico)",
+    "especialidadesAssociadas": [
+      "Cardiologia"
+    ]
+  },
+  {
+    "subgrupo": 119,
+    "descricao": "TUBO DIGESTIVO",
+    "especialidadesAssociadas": [
+      "Gastroenterologia (endoscopias e diagnósticos)",
+      "Cirurgia do Aparelho Digestivo"
+    ]
+  },
+  {
+    "subgrupo": 120,
+    "descricao": "EXAMES ÓSTEO – MÚSCULO – ARTICULARES",
+    "especialidadesAssociadas": [
+      "Ortopedia",
+      "Reumatologia",
+      "Radiologia (laudos de imagem)"
+    ]
+  },
+  {
+    "subgrupo": 121,
+    "descricao": "FUNÇÃO RESPIRATÓRIA",
+    "especialidadesAssociadas": [
+      "Pneumologia (espirometria, testes de função pulmonar)"
+    ]
+  },
+  {
+    "subgrupo": 122,
+    "descricao": "BIOQUÍMICA (SANGUE, URINA E OUTROS MATERIAIS)",
+    "especialidadesAssociadas": [
+      "Patologia Clínica/Medicina Laboratorial"
+    ]
+  },
+  {
+    "subgrupo": 123,
+    "descricao": "GENÉTICA BIOQUÍMICA",
+    "especialidadesAssociadas": [
+      "Genética Médica",
+      "Patologia Clínica (laboratórios especializados)"
+    ]
+  },
+  {
+    "subgrupo": 124,
+    "descricao": "TOXICOLOGIA / MONITORIZAÇÃO TERAPÊUTICA",
+    "especialidadesAssociadas": [
+      "Patologia Clínica (análises)",
+      "Especialidades clínicas que monitoram drogas (Infectologia, Psiquiatria, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 125,
+    "descricao": "LÍQUIDOS (CEFALORRAQUEANO, SEMINAL, AMNIÓTICO, SINOVIAL E OUTROS)",
+    "especialidadesAssociadas": [
+      "Patologia Clínica (análises laboratoriais)",
+      "Neurologia (líquor)",
+      "Ginecologia/Obstetrícia (líquido amniótico)",
+      "Reumatologia/Ortopedia (líquido sinovial)"
+    ]
+  },
+  {
+    "subgrupo": 126,
+    "descricao": "HEMATOLOGIA LABORATORIAL",
+    "especialidadesAssociadas": [
+      "Hematologia",
+      "Patologia Clínica"
+    ]
+  },
+  {
+    "subgrupo": 127,
+    "descricao": "URINÁLISE",
+    "especialidadesAssociadas": [
+      "Patologia Clínica",
+      "Nefrologia (interpretação clínica)"
+    ]
+  },
+  {
+    "subgrupo": 128,
+    "descricao": "COPROLOGIA",
+    "especialidadesAssociadas": [
+      "Patologia Clínica (análises de fezes)",
+      "Gastroenterologia (interpretação clínica)"
+    ]
+  },
+  {
+    "subgrupo": 129,
+    "descricao": "IMUNOLOGIA",
+    "especialidadesAssociadas": [
+      "Imunologia Clínica",
+      "Alergologia e Imunologia"
+    ]
+  },
+  {
+    "subgrupo": 130,
+    "descricao": "EXAMES DE QUALIFICAÇÃO NO SANGUE DO DOADOR OU PROVA PRÉ-TRANSFUSIONAL NO SANGUE DO RECEPTOR",
+    "especialidadesAssociadas": [
+      "Hemoterapia",
+      "Hematologia"
+    ]
+  },
+  {
+    "subgrupo": 131,
+    "descricao": "MICROBIOLOGIA",
+    "especialidadesAssociadas": [
+      "Infectologia",
+      "Patologia Clínica (microbiologia laboratorial)"
+    ]
+  },
+  {
+    "subgrupo": 132,
+    "descricao": "GENÉTICA MOLECULAR",
+    "especialidadesAssociadas": [
+      "Genética Médica",
+      "Patologia Clínica (laboratórios especializados)"
+    ]
+  },
+  {
+    "subgrupo": 133,
+    "descricao": "ENDOCRINOLOGIA LABORATORIAL",
+    "especialidadesAssociadas": [
+      "Endocrinologia",
+      "Patologia Clínica"
+    ]
+  },
+  {
+    "subgrupo": 134,
+    "descricao": "DIVERSOS",
+    "especialidadesAssociadas": [
+      "Pode envolver várias áreas, dependendo do exame/procedimento"
+    ]
+  },
+  {
+    "subgrupo": 135,
+    "descricao": "BIOLOGIA MOLECULAR",
+    "especialidadesAssociadas": [
+      "Genética Médica",
+      "Patologia Clínica (laboratórios de biologia molecular)"
+    ]
+  },
+  {
+    "subgrupo": 136,
+    "descricao": "CITOGENÉTICA",
+    "especialidadesAssociadas": [
+      "Genética Médica",
+      "Patologia Clínica"
+    ]
+  },
+  {
+    "subgrupo": 137,
+    "descricao": "MEDULA ÓSSEA",
+    "especialidadesAssociadas": [
+      "Hematologia (biópsias, transplante)",
+      "Oncologia (tratamentos onco-hematológicos)"
+    ]
+  },
+  {
+    "subgrupo": 138,
+    "descricao": "HEMATOLÓGICO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Hematologia"
+    ]
+  },
+  {
+    "subgrupo": 139,
+    "descricao": "TRANSFUSÃO",
+    "especialidadesAssociadas": [
+      "Hemoterapia",
+      "Hematologia"
+    ]
+  },
+  {
+    "subgrupo": 140,
+    "descricao": "PROCESSAMENTO",
+    "especialidadesAssociadas": [
+      "Hemoterapia (processamento de sangue e componentes)"
+    ]
+  },
+  {
+    "subgrupo": 141,
+    "descricao": "CARDIOVASCULAR – IN VIVO",
+    "especialidadesAssociadas": [
+      "Cardiologia (testes de estresse, cintilografia, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 142,
+    "descricao": "DIGESTIVO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Gastroenterologia (exames funcionais, pHmetria, manometria, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 143,
+    "descricao": "ONCOLOGIA / INFECTOLOGIA – IN VIVO",
+    "especialidadesAssociadas": [
+      "Oncologia",
+      "Infectologia"
+    ]
+  },
+  {
+    "subgrupo": 144,
+    "descricao": "ENDÓCRINO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Endocrinologia (testes de supressão ou estímulo hormonal, etc.)"
+    ]
+  },
+  {
+    "subgrupo": 145,
+    "descricao": "GENITURINÁRIO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Urologia (testes funcionais do trato urinário)",
+      "Ginecologia (testes do assoalho pélvico)"
+    ]
+  },
+  {
+    "subgrupo": 146,
+    "descricao": "MÚSCULO – ESQUELÉTICO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Ortopedia (densitometria, testes funcionais)",
+      "Reumatologia"
+    ]
+  },
+  {
+    "subgrupo": 147,
+    "descricao": "NERVOSO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Neurologia (EEG, eletroneuromiografia, potenciais evocados)",
+      "Neurocirurgia"
+    ]
+  },
+  {
+    "subgrupo": 148,
+    "descricao": "RESPIRATÓRIO – IN VIVO",
+    "especialidadesAssociadas": [
+      "Pneumologia (testes de função pulmonar, broncoprovocação)"
+    ]
+  },
+  {
+    "subgrupo": 149,
+    "descricao": "TERAPIA – IN VIVO",
+    "especialidadesAssociadas": [
+      "Especialidades que utilizam radioisótopos (Medicina Nuclear), radioterapia, etc."
+    ]
+  },
+  {
+    "subgrupo": 150,
+    "descricao": "OUTROS – IN VIVO",
+    "especialidadesAssociadas": [
+      "Procedimentos ou terapias diversos em pacientes vivos, várias áreas"
+    ]
+  },
+  {
+    "subgrupo": 151,
+    "descricao": "TOMOGRAFIA COMPUTADORIZADA INTERVENCIONISTA",
+    "especialidadesAssociadas": [
+      "Radiologia Intervencionista"
+    ]
+  },
+  {
+    "subgrupo": 152,
+    "descricao": "ULTRASSONOGRAFIA DIAGNÓSTICA",
+    "especialidadesAssociadas": [
+      "Radiologia",
+      "Ginecologia/Obstetrícia (ultrassom obstétrico, ecografia ginecológica)",
+      "Cardiologia (ecocardiograma)",
+      "Outras áreas que utilizam ultrassom"
+    ]
+  },
+  {
+    "subgrupo": 153,
+    "descricao": "TOMOGRAFIA COMPUTADORIZADA",
+    "especialidadesAssociadas": [
+      "Radiologia e Diagnóstico por Imagem"
+    ]
+  },
+  {
+    "subgrupo": 154,
+    "descricao": "RADIOTERAPIA MEGAVOLTAGEM",
+    "especialidadesAssociadas": [
+      "Radioterapia"
+    ]
+  },
+  {
+    "subgrupo": 155,
+    "descricao": "RESSONÂNCIA MAGNÉTICA",
+    "especialidadesAssociadas": [
+      "Radiologia e Diagnóstico por Imagem"
+    ]
+  },
+  {
+    "subgrupo": 156,
+    "descricao": "BETATERAPIA",
+    "especialidadesAssociadas": [
+      "Radioterapia (terapia com elétrons/beta)"
+    ]
+  },
+  {
+    "subgrupo": 157,
+    "descricao": "RADIOTERAPIA DE ORTOVOLTAGEM",
+    "especialidadesAssociadas": [
+      "Radioterapia"
+    ]
+  },
+  {
+    "subgrupo": 158,
+    "descricao": "BRAQUITERAPIA DE ALTA TAXA DE DOSE (BATD)",
+    "especialidadesAssociadas": [
+      "Radioterapia"
+    ]
+  },
+  {
+    "subgrupo": 159,
+    "descricao": "BRAQUITERAPIA DE BAIXA TAXA DE DOSE (BBTD)",
+    "especialidadesAssociadas": [
+      "Radioterapia"
+    ]
+  },
+  {
+    "subgrupo": 160,
+    "descricao": "BIOLOGIA MOLECULAR",
+    "especialidadesAssociadas": [
+      "Genética Médica",
+      "Patologia Clínica (laboratórios)"
+    ]
+  },
+  {
+    "subgrupo": 161,
+    "descricao": "IMUNOLOGIA",
+    "especialidadesAssociadas": [
+      "Imunologia Clínica",
+      "Alergologia e Imunologia"
+    ]
+  }
+]
