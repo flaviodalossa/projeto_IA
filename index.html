@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busca TUSSxRol</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    #resultado { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Busca TUSSxRol</h1>
+  <h3>Importante ressaltar que isto NÃO é um buscador que resolve a situação, somente uma página de TESTES<h3>
+  <input type="text" id="campoBusca" placeholder="Digite o valor para busca" />
+  <button onclick="fazerBusca()">Buscar</button>
+  
+  <div id="resultado"></div>
+  
+  <script>
+    async function fazerBusca() {
+      const valor = document.getElementById('campoBusca').value.trim();
+      if (!valor) {
+        alert("Digite um valor para buscar!");
+        return;
+      }
+      // Substitua pela URL do seu serviço no Cloud Run ou Cloud Functions
+      const url = `https://NOME_DO_SEU_SERVICO.a.run.app/buscar?valor=${encodeURIComponent(valor)}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (response.ok) {
+          document.getElementById('resultado').innerText =
+            'Resultado: ' + JSON.stringify(data.resultado, null, 2);
+        } else {
+          document.getElementById('resultado').innerText =
+            'Erro: ' + (data.erro || 'Não encontrado');
+        }
+      } catch (error) {
+        document.getElementById('resultado').innerText = 'Erro de conexão: ' + error;
+      }
+    }
+  </script>
+</body>
+</html>
