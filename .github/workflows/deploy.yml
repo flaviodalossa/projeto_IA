@@ -7,42 +7,32 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1) Check out the repository
       - name: Check out the repository
         uses: actions/checkout@v3
 
-      # 2) Authenticate to Google Cloud using the service account key
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
-      # 3) Set up gcloud CLI (no service_account_key here)
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: 'busca-med'
-          # Optionally, add install_components if needed
-          # install_components: 'beta'
 
-      # 4) Configure Docker to use gcloud as a credential helper
-      - name: Configure Docker for GCR
-        run: gcloud auth configure-docker --quiet
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
 
-      # 5) Build and push Docker image
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/busca-med/busca-med-app:$GITHUB_SHA .
-          docker push gcr.io/busca-med/busca-med-app:$GITHUB_SHA
+          docker build -t southamerica-east1-docker.pkg.dev/busca-med/busca-med-app/busca-med-app:$GITHUB_SHA .
+          docker push southamerica-east1-docker.pkg.dev/busca-med/busca-med-app/busca-med-app:$GITHUB_SHA
 
-      # 6) Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy busca-med-app \
-            --image gcr.io/busca-med/busca-med-app:$GITHUB_SHA \
+            --image=southamerica-east1-docker.pkg.dev/busca-med/busca-med-app/busca-med-app:$GITHUB_SHA \
             --region southamerica-east1 \
             --platform managed \
             --allow-unauthenticated
-
