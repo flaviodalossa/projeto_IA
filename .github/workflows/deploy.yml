@@ -34,14 +34,14 @@ jobs:
       # 5) Build and push Docker image
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/busca-med-app/busca-med-app:$GITHUB_SHA .
-          docker push gcr.io/busca-med-app/busca-med-app:$GITHUB_SHA
+          docker build -t gcr.io/busca-med/busca-med-app:$GITHUB_SHA .
+          docker push gcr.io/busca-med/busca-med-app:$GITHUB_SHA
 
       # 6) Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy busca-med-app \
-            --image gcr.io/busca-med-app/busca-med-app:$GITHUB_SHA \
+            --image gcr.io/busca-med/busca-med-app:$GITHUB_SHA \
             --region southamerica-east1 \
             --platform managed \
             --allow-unauthenticated
