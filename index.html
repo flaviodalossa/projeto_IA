@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Busca TUSSxRol</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    #resultado { margin-top: 20px; white-space: pre; }
+  </style>
+</head>
+<body>
+  <h1>Busca TUSSxRol</h1>
+  <h3>Importante: página de teste, não substitui ferramentas oficiais.</h3>
+  <input type="text" id="campoBusca" placeholder="Digite o valor para busca" />
+  <button onclick="fazerBusca()">Buscar</button>
+  
+  <div id="resultado"></div>
+  
+  <script>
+    async function fazerBusca() {
+      const valor = document.getElementById('campoBusca').value.trim();
+      if (!valor) {
+        alert("Digite um valor para buscar!");
+        return;
+      }
+      // Substitua pela URL real do seu serviço no Cloud Run
+      const url = `https://busca-med-web-app-562085315701.southamerica-east1.run.app/buscar?valor=${encodeURIComponent(valor)}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (response.ok) {
+          document.getElementById('resultado').innerText =
+            'Resultado:\n' + JSON.stringify(data.resultado, null, 2);
+        } else {
+          document.getElementById('resultado').innerText =
+            'Erro: ' + (data.erro || 'Não encontrado');
+        }
+      } catch (error) {
+        document.getElementById('resultado').innerText = 'Erro de conexão: ' + error;
+      }
+    }
+  </script>
+</body>
+</html>
