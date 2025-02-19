@@ -1,4 +1,4 @@
-FROM python:3.12-slim-buster
+FROM python:3.12-slim-bullseye
 
 WORKDIR /app
 
@@ -13,4 +13,3 @@ ENV FLASK_APP=app.py
 ENV GOOGLE_APPLICATION_CREDENTIALS=/secrets/service_account_key.json
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
-
