@@ -10,6 +10,6 @@ COPY . .
 EXPOSE 8080
 
 ENV FLASK_APP=app.py
-ENV GOOGLE_APPLICATION_CREDENTIALS=/secrets/service_account_key.json
+ENV GOOGLE_APPLICATION_CREDENTIALS1=/secrets/service_account_key.json
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
