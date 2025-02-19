@@ -41,6 +41,7 @@ def carregar_dados():
             print(f"Erro ao baixar CSV. Status code: {response.status_code}")
     except Exception as e:
         print("Erro ao carregar dados:", e)
+        raise
 
 def buscar_informacoes(valor_busca: str) -> dict:
     """
