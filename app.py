@@ -16,7 +16,13 @@ from flask import Flask, request, jsonify
 # Substitua SEU_FILE_ID pelo ID real do arquivo no Drive.
 CSV_URL = "https://drive.google.com/file/d/1znQZMBzz5L_Xh9W4Gsb5CKl2_kaHTvjj/view?usp=sharing"
 
+
+
+
+
 app = Flask(__name__)
+@app.route("/")
+
 df_tuss = None  # Variável global para armazenar o DataFrame
 
 def carregar_dados():
