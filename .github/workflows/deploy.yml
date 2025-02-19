@@ -36,3 +36,4 @@ jobs:
             --region southamerica-east1 \
             --platform managed \
             --allow-unauthenticated
+
