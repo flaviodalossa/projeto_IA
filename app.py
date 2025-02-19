@@ -21,7 +21,6 @@ CSV_URL = "https://drive.google.com/uc?export=download&id=1znQZMBzz5L_Xh9W4Gsb5C
 
 
 app = Flask(__name__)
-@app.route("/")
 
 df_tuss = None  # Variável global para armazenar o DataFrame
 
@@ -108,6 +107,8 @@ def buscar_informacoes(valor_busca: str) -> dict:
 
     # Caso não encontre correspondência
     return {}
+    
+carregar_dados()
 
 @app.route('/')
 def index():
@@ -130,6 +131,6 @@ def buscar():
         return jsonify({"erro": "Nenhum resultado encontrado"}), 404
 
 if __name__ == '__main__':
-    carregar_dados()
+    
     # Para rodar localmente:
     app.run(host='0.0.0.0', port=8080, debug=True)
