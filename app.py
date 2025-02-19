@@ -11,16 +11,19 @@ import pandas as pd
 import requests
 from io import StringIO
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+
+
 
 # URL de download direto do seu CSV no Google Drive.
-# Substitua SEU_FILE_ID pelo ID real do arquivo no Drive.
+
 CSV_URL = "https://drive.google.com/uc?export=download&id=1znQZMBzz5L_Xh9W4Gsb5CKl2_kaHTvjj"
 
 
-
-
-
 app = Flask(__name__)
+
+CORS(app)  # This enables CORS
 
 df_tuss = None  # Variável global para armazenar o DataFrame
 
