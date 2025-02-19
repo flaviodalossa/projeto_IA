@@ -40,7 +40,7 @@ jobs:
       # 6) Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy busca-med-web-app \
+          gcloud run deploy busca-med-app \
             --image gcr.io/busca-med/busca-med-app:$GITHUB_SHA \
             --region southamerica-east1 \
             --platform managed \
