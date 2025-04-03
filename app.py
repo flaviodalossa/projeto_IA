@@ -3,29 +3,391 @@ import requests
 from io import StringIO
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
 
-# URL de download direto do seu CSV no Google Drive
+# URL de download do CSV (tussxrol_2024.csv) no Google Drive
 CSV_URL = "https://drive.google.com/uc?export=download&id=1znQZMBzz5L_Xh9W4Gsb5CKl2_kaHTvjj"
 
 app = Flask(__name__)
-CORS(app)  # Habilita CORS para todas as rotas
+CORS(app)
 
-df_tuss = None  # Variável global para armazenar o DataFrame
+# Variável global para armazenar o DataFrame
+df_tuss = None
+
+# Dicionários para indexar as colunas de interesse
+index_codigo = {}
+index_tuss = {}
+index_procedimento = {}
+
+# Dados de subgrupos (informações provenientes do YAML fornecido)
+subgrupos_data = [
+    {
+        "subgrupo": 1,
+        "descricao": "CONSULTAS, VISITAS HOSPITALARES OU ACOMPANHAMENTO DE PACIENTES",
+        "areasPossivelmenteEnvolvidas": [
+            "Administração em saúde (1)",
+            "Auditoria Médica (5)",
+            "Emergência pediátrica (17)",
+            "Medicina do adolescente (34)",
+            "Medicina intensiva pediátrica (37)",
+            "Infectologia hospitalar (30)",
+            "Medicina paliativa (38)"
+        ],
+        "observacoes": "Praticamente todas as áreas médicas podem realizar este tipo de atendimento."
+    },
+    {
+        "subgrupo": 2,
+        "descricao": "AVALIAÇÕES/ACOMPANHAMENTOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Mesmas do item 1, pois a maior parte das especialidades realiza avaliações/acompanhamentos."
+        ]
+    },
+    {
+        "subgrupo": 3,
+        "descricao": "PROCEDIMENTOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Cirurgia bariátrica (7)",
+            "Cirurgia crânio-maxilo-facial (8)",
+            "Cirurgia do trauma (9)",
+            "Cirurgia videolaparoscópica (10)",
+            "Angiorradiologia e cirurgia endovascular (3)",
+            "Endoscopia digestiva (19)",
+            "Endoscopia ginecológica (20)",
+            "Endoscopia respiratória (21)",
+            "Hemodinâmica e cardiologia intervencionista (28)",
+            "etc."
+        ],
+        "observacoes": "Muitos procedimentos podem abranger praticamente todas as áreas, a depender do tipo."
+    },
+    {
+        "subgrupo": 4,
+        "descricao": "ORELHA INTERNA",
+        "areasPossivelmenteEnvolvidas": [
+            "Foniatria (24)"
+        ]
+    },
+    {
+        "subgrupo": 5,
+        "descricao": "SISTEMA NERVOSO",
+        "areasPossivelmenteEnvolvidas": [
+            "Neurologia pediátrica (43)",
+            "Neurofisiologia clínica (42)",
+            "Neurorradiologia (44)",
+            "Dor (13)",
+            "Medicina intensiva pediátrica (37)",
+            "etc."
+        ]
+    },
+    {
+        "subgrupo": 6,
+        "descricao": "ENCÉFALO",
+        "areasPossivelmenteEnvolvidas": [
+            "Neurologia pediátrica (43)",
+            "Neurofisiologia clínica (42)",
+            "Neurorradiologia (44)",
+            "Cirurgia do trauma (9) (em casos de neurotrauma, embora não haja “Neurocirurgia” explicitamente na lista)"
+        ]
+    },
+    {
+        "subgrupo": 7,
+        "descricao": "MEDULA (espinhal)",
+        "areasPossivelmenteEnvolvidas": [
+            "Neurologia pediátrica (43)",
+            "Neurofisiologia clínica (42)",
+            "Neurorradiologia (44)",
+            "Cirurgia do trauma (9) (em casos de trauma raquimedular)"
+        ],
+        "observacoes": "Aqui, entende-se “medula espinhal” e não medula óssea, pois “Medula óssea” aparece mais adiante, no subgrupo 138."
+    },
+    {
+        "subgrupo": 8,
+        "descricao": "NERVOS PERIFÉRICOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Neurologia pediátrica (43)",
+            "Neurofisiologia clínica (42)"
+        ]
+    },
+    {
+        "subgrupo": 9,
+        "descricao": "MONITORIZAÇÕES",
+        "areasPossivelmenteEnvolvidas": [
+            "Eletrofisiologia clínica invasiva (16)",
+            "Emergência pediátrica (17)",
+            "Dor (13)",
+            "Medicina intensiva pediátrica (37)",
+            "Cardiologia pediátrica (6)",
+            "etc."
+        ]
+    },
+    {
+        "subgrupo": 10,
+        "descricao": "REABILITAÇÃO",
+        "areasPossivelmenteEnvolvidas": [
+            "Foniatria (24) (reabilitação de fala e audição)",
+            "Dor (13) (reabilitação em condições crônicas dolorosas)",
+            "Medicina paliativa (38)",
+            "entre outras"
+        ]
+    },
+    {
+        "subgrupo": 11,
+        "descricao": "TERAPÊUTICA",
+        "areasPossivelmenteEnvolvidas": [
+            "Dor (13)",
+            "Medicina paliativa (38)",
+            "Nutrição parenteral e enteral (45 e 46, dependendo se pediátrica ou não)",
+            "etc."
+        ]
+    },
+    {
+        "subgrupo": 13,
+        "descricao": "MÉTODOS INTERVENCIONISTAS DIAGNÓSTICOS E TERAPÊUTICOS POR IMAGEM",
+        "areasPossivelmenteEnvolvidas": [
+            "Angiorradiologia e cirurgia endovascular (3)",
+            "Radiologia intervencionista e angiorradiologia (54)",
+            "Hemodinâmica e cardiologia intervencionista (28)"
+        ]
+    },
+    {
+        "subgrupo": 14,
+        "descricao": "ORELHA MÉDIA",
+        "areasPossivelmenteEnvolvidas": [
+            "Foniatria (24) (principalmente no contexto de avaliação e reabilitação de audição/fala)"
+        ]
+    },
+    {
+        "subgrupo": 28,
+        "descricao": "TRAUMA CRÂNIO-MAXILO-FACIAL",
+        "areasPossivelmenteEnvolvidas": [
+            "Cirurgia crânio-maxilo-facial (8)",
+            "Cirurgia do trauma (9)"
+        ]
+    },
+    {
+        "subgrupo": 35,
+        "descricao": "CRÂNIO",
+        "areasPossivelmenteEnvolvidas": [
+            "Cirurgia crânio-maxilo-facial (8)",
+            "Neurorradiologia (44) (quando há necessidade de diagnóstico por imagem de crânio)",
+            "Cirurgia do trauma (9)",
+            "etc."
+        ]
+    },
+    {
+        "subgrupo": 65,
+        "descricao": "TRAQUÉIA",
+        "areasPossivelmenteEnvolvidas": [
+            "Endoscopia respiratória (21)",
+            "Pneumologia pediátrica (49)"
+        ]
+    },
+    {
+        "subgrupo": 66,
+        "descricao": "BRÔNQUIOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Endoscopia respiratória (21)",
+            "Pneumologia pediátrica (49)"
+        ]
+    },
+    {
+        "subgrupo": 67,
+        "descricao": "PULMÃO",
+        "areasPossivelmenteEnvolvidas": [
+            "Pneumologia pediátrica (49)",
+            "Emergência pediátrica (17) (em urgências respiratórias)",
+            "Infectologia pediátrica (31) (se houver infecções pulmonares específicas)"
+        ]
+    },
+    {
+        "subgrupo": 68,
+        "descricao": "PLEURA",
+        "areasPossivelmenteEnvolvidas": [
+            "Pneumologia pediátrica (49)",
+            "Cirurgia do trauma (9) (em casos de trauma torácico)"
+        ]
+    },
+    {
+        "subgrupo": 71,
+        "descricao": "DEFEITOS CARDÍACOS CONGÊNITOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Cardiologia pediátrica (6)"
+        ]
+    },
+    {
+        "subgrupo": 72,
+        "descricao": "HEMODINÂMICA - CARDIOLOGIA INTERVENCIONISTA",
+        "areasPossivelmenteEnvolvidas": [
+            "Hemodinâmica e cardiologia intervencionista (28)"
+        ]
+    },
+    {
+        "subgrupo": 74,
+        "descricao": "CORONARIOPATIAS",
+        "areasPossivelmenteEnvolvidas": [
+            "Hemodinâmica e cardiologia intervencionista (28)",
+            "Cardiologia pediátrica (6) (no caso de anomalias coronarianas congênitas ou precoces)"
+        ]
+    },
+    {
+        "subgrupo": 75,
+        "descricao": "MARCA-PASSO",
+        "areasPossivelmenteEnvolvidas": [
+            "Estimulação cardíaca eletrônica implantável (23)"
+        ]
+    },
+    {
+        "subgrupo": 79,
+        "descricao": "HEMODIÁLISE DE CURTA E LONGA PERMANÊNCIA",
+        "areasPossivelmenteEnvolvidas": [
+            "Nefrologia pediátrica (40)"
+        ]
+    },
+    {
+        "subgrupo": 82,
+        "descricao": "PERICÁRDIO",
+        "areasPossivelmenteEnvolvidas": [
+            "Cardiologia pediátrica (6) (pericardiocenteses, cirurgias, etc.)"
+        ]
+    },
+    {
+        "subgrupo": 85,
+        "descricao": "ESÔFAGO",
+        "areasPossivelmenteEnvolvidas": [
+            "Endoscopia digestiva (19)"
+        ]
+    },
+    {
+        "subgrupo": 86,
+        "descricao": "ESTÔMAGO",
+        "areasPossivelmenteEnvolvidas": [
+            "Endoscopia digestiva (19)"
+        ]
+    },
+    {
+        "subgrupo": 87,
+        "descricao": "INTESTINOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Endoscopia digestiva (19)",
+            "Gastroenterologia pediátrica (25)"
+        ]
+    },
+    {
+        "subgrupo": 89,
+        "descricao": "FÍGADO E VIAS BILIARES",
+        "areasPossivelmenteEnvolvidas": [
+            "Hepatologia (29)"
+        ]
+    },
+    {
+        "subgrupo": 91,
+        "descricao": "PÂNCREAS",
+        "areasPossivelmenteEnvolvidas": [
+            "Gastroenterologia pediátrica (25) (no contexto de pancreatites, doenças pancreáticas)",
+            "Endoscopia digestiva (19) (por exemplo, CPRE)"
+        ]
+    },
+    {
+        "subgrupo": 92,
+        "descricao": "BAÇO",
+        "areasPossivelmenteEnvolvidas": [
+            "Hematologia e hemoterapia pediátrica (27) (doenças hematológicas que envolvem o baço)",
+            "Cirurgia do trauma (9) (em casos de trauma esplênico)"
+        ]
+    },
+    {
+        "subgrupo": 107,
+        "descricao": "PARTOS E OUTROS PROCEDIMENTOS OBSTÉTRICOS",
+        "areasPossivelmenteEnvolvidas": [
+            "Medicina fetal (36)",
+            "Ultrassonografia em ginecologia e obstetrícia (60) (acompanhamento ultrassonográfico)"
+        ]
+    },
+    {
+        "subgrupo": 113,
+        "descricao": "ULTRASSONOGRAFIA INTERVENCIONISTA",
+        "areasPossivelmenteEnvolvidas": [
+            "Ultrassonografia geral (61)",
+            "Ultrassonografia em ginecologia e obstetrícia (60) (dependendo da aplicação específica)"
+        ]
+    },
+    {
+        "subgrupo": 117,
+        "descricao": "RIM",
+        "areasPossivelmenteEnvolvidas": [
+            "Nefrologia pediátrica (40)"
+        ]
+    },
+    {
+        "subgrupo": 129,
+        "descricao": "COPROLOGIA",
+        "areasPossivelmenteEnvolvidas": [
+            "Gastroenterologia pediátrica (25) (avaliação de distúrbios gastrintestinais em crianças)"
+        ]
+    },
+    {
+        "subgrupo": 138,
+        "descricao": "MEDULA ÓSSEA",
+        "areasPossivelmenteEnvolvidas": [
+            "Hematologia e hemoterapia pediátrica (27)",
+            "Transplante de medula óssea (59)"
+        ],
+        "observacoes": "Diferencia-se de “Medula” no subgrupo 7, pois aqui se refere a medula óssea."
+    },
+    {
+        "subgrupo": 144,
+        "descricao": "ONCOLOGIA / INFECTOLOGIA - IN VIVO",
+        "areasPossivelmenteEnvolvidas": [
+            "Oncologia pediátrica (48)",
+            "Infectologia pediátrica (31)",
+            "Infectologia hospitalar (30)"
+        ]
+    },
+    {
+        "subgrupo": 159,
+        "descricao": "BRAQUITERAPIA DE ALTA TAXA DE DOSE (BATD)",
+        "areasPossivelmenteEnvolvidas": [
+            "Oncologia pediátrica (48) (em casos de tumores infantis que requeiram radioterapia)"
+        ]
+    },
+    {
+        "subgrupo": 160,
+        "descricao": "BRAQUITERAPIA DE BAIXA TAXA DE DOSE (BBTD)",
+        "areasPossivelmenteEnvolvidas": [
+            "Oncologia pediátrica (48)"
+        ]
+    },
+    {
+        "subgrupo": 161,
+        "descricao": "BIOLOGIA MOLECULAR",
+        "areasPossivelmenteEnvolvidas": [
+            "Interface com várias áreas que utilizem testes moleculares (p. ex., Hematologia e hemoterapia pediátrica (27), Infectologia pediátrica (31), Oncologia pediátrica (48))"
+        ],
+        "observacoes": "Não há “Biologia molecular” nominada de forma direta na lista de áreas de atuação, mas pode ter interface com várias áreas. Em alguns cenários, relaciona-se a Genética, mas essa não consta explicitamente."
+    },
+    {
+        "subgrupo": 162,
+        "descricao": "IMUNOLOGIA",
+        "areasPossivelmenteEnvolvidas": [
+            "Alergia e imunologia pediátrica (2)"
+        ]
+    }
+]
+
+# Cria um índice para acesso rápido aos dados de subgrupo
+index_subgrupos = { item["subgrupo"]: item for item in subgrupos_data }
 
 def carregar_dados():
     """
-    Faz o download do CSV do Google Drive e carrega em um DataFrame pandas.
-    Substitui valores NaN por string vazia para evitar erros de JSON.
+    Faz o download do CSV do Google Drive e carrega os dados em um DataFrame.
+    Substitui valores NaN por string vazia.
     """
     global df_tuss
     try:
         response = requests.get(CSV_URL)
         if response.status_code == 200:
             data_str = response.content.decode('utf-8')
-            # Ajuste o separador se necessário (sep=';')
             df_tuss = pd.read_csv(StringIO(data_str), sep=',', encoding='utf-8')
-            # Substitui NaN por ""
-            df_tuss = df_tuss.fillna("")
+            df_tuss.fillna("", inplace=True)
             print("CSV carregado com sucesso!")
         else:
             print(f"Erro ao baixar CSV. Status code: {response.status_code}")
@@ -33,74 +395,67 @@ def carregar_dados():
         print("Erro ao carregar dados:", e)
         raise
 
+def construir_indices():
+    """
+    Constrói índices mapeando os valores das colunas 'codigo', 'TUSS' e 'procedimento'
+    para todas as linhas correspondentes do DataFrame.
+    """
+    global index_codigo, index_tuss, index_procedimento
+    index_codigo = {}
+    index_tuss = {}
+    index_procedimento = {}
+    
+    for _, row in df_tuss.iterrows():
+        # Converte os valores para string para garantir consistência
+        codigo_val = str(row['codigo'])
+        tuss_val = str(row['TUSS'])
+        proc_val = str(row['procedimento'])
+        
+        # Índice para 'codigo'
+        index_codigo.setdefault(codigo_val, []).append(row.to_dict())
+        # Índice para 'TUSS'
+        index_tuss.setdefault(tuss_val, []).append(row.to_dict())
+        # Índice para 'procedimento'
+        index_procedimento.setdefault(proc_val, []).append(row.to_dict())
+
 def buscar_informacoes(valor_busca: str) -> dict:
     """
-    Busca o valor em cada coluna relevante e retorna um dicionário
-    com as outras colunas correspondentes.
-    Caso não encontre correspondência, retorna um dicionário vazio.
+    Realiza a busca na ordem: 'codigo', 'TUSS' e 'procedimento'.
+    Para o(s) registro(s) encontrado(s), anexa informações do subgrupo (se disponível).
+    Retorna um dicionário com os resultados ou vazio se não houver correspondência.
     """
-    if df_tuss is None:
-        return {}
+    resultado = None
 
-    # Ajuste o nome das colunas conforme seu CSV
-    col_codigo = 'codigo'
-    col_tuss = 'TUSS'
-    col_tussxrol = 'TUSSxRol'
-    col_procedimento = 'procedimento'
-    col_sinonimos = 'sinonimos'  # Ajuste se necessário
-
-    # Converter para string antes de comparar, para evitar problemas de tipo
-    df_tuss[col_codigo] = df_tuss[col_codigo].astype(str)
-    df_tuss[col_tuss] = df_tuss[col_tuss].astype(str)
-    df_tuss[col_tussxrol] = df_tuss[col_tussxrol].astype(str)
-    if col_sinonimos in df_tuss.columns:
-        df_tuss[col_sinonimos] = df_tuss[col_sinonimos].astype(str)
-
-    # 1) Verifica se o valor está em 'codigo'
-    if valor_busca in df_tuss[col_codigo].values:
-        linha = df_tuss.loc[df_tuss[col_codigo] == valor_busca].iloc[0]
-        return {
-            col_tuss: linha[col_tuss],
-            col_tussxrol: linha[col_tussxrol],
-            col_procedimento: linha[col_procedimento]
-        }
-
-    # 2) Verifica se o valor está em 'TUSS'
-    if valor_busca in df_tuss[col_tuss].values:
-        linha = df_tuss.loc[df_tuss[col_tuss] == valor_busca].iloc[0]
-        return {
-            col_codigo: linha[col_codigo],
-            col_tussxrol: linha[col_tussxrol],
-            col_procedimento: linha[col_procedimento]
-        }
-
-    # 3) Verifica se o valor está em 'TUSSxRol'
-    if valor_busca in df_tuss[col_tussxrol].values:
-        linha = df_tuss.loc[df_tuss[col_tussxrol] == valor_busca].iloc[0]
-        return {
-            col_codigo: linha[col_codigo],
-            col_tuss: linha[col_tuss],
-            col_procedimento: linha[col_procedimento]
-        }
-
-    # 4) Verifica se existe a coluna "sinonimos" e se o valor está nela
-    if col_sinonimos in df_tuss.columns:
-        # Exemplo de busca contendo substring (case-insensitive)
-        mask = df_tuss[col_sinonimos].str.contains(valor_busca, case=False, na=False)
-        if mask.any():
-            linha = df_tuss.loc[mask].iloc[0]
-            return {
-                col_codigo: linha[col_codigo],
-                col_tuss: linha[col_tuss],
-                col_tussxrol: linha[col_tussxrol],
-                col_procedimento: linha[col_procedimento]
-            }
-
-    # Caso não encontre correspondência
+    # Verifica na coluna 'codigo'
+    if valor_busca in index_codigo:
+        resultado = index_codigo[valor_busca]
+    # Se não encontrou, verifica na coluna 'TUSS'
+    elif valor_busca in index_tuss:
+        resultado = index_tuss[valor_busca]
+    # Se ainda não encontrou, verifica na coluna 'procedimento'
+    elif valor_busca in index_procedimento:
+        resultado = index_procedimento[valor_busca]
+    
+    # Se encontrou registros, anexa os dados do subgrupo (se aplicável)
+    if resultado:
+        for registro in resultado:
+            subgrupo_val = registro.get("subgrupo", "")
+            try:
+                # Tenta converter o valor para inteiro, se possível
+                subgrupo_num = int(subgrupo_val)
+                if subgrupo_num in index_subgrupos:
+                    registro["subgrupo_info"] = index_subgrupos[subgrupo_num]
+            except ValueError:
+                # Se não for numérico, ignora
+                pass
+        return {"resultado": resultado}
+    
     return {}
 
-# Carrega o CSV ao importar o módulo (funciona tanto localmente quanto no Gunicorn/Cloud Run)
+# Carrega os dados e constrói os índices ao iniciar o aplicativo
 carregar_dados()
+if df_tuss is not None:
+    construir_indices()
 
 @app.route('/')
 def index():
@@ -109,7 +464,7 @@ def index():
 @app.route('/buscar', methods=['GET'])
 def buscar():
     """
-    Endpoint que recebe um parâmetro 'valor' via query string.
+    Endpoint que recebe o parâmetro 'valor' via query string.
     Exemplo: /buscar?valor=12345
     """
     valor_busca = request.args.get('valor', '').strip()
@@ -118,10 +473,10 @@ def buscar():
 
     resultado = buscar_informacoes(valor_busca)
     if resultado:
-        return jsonify({"resultado": resultado}), 200
+        return jsonify(resultado), 200
     else:
         return jsonify({"erro": "Nenhum resultado encontrado"}), 404
 
 if __name__ == '__main__':
-    # Para rodar localmente:
+    # Executa localmente; o Cloud Run utilizará o Gunicorn conforme configurado.
     app.run(host='0.0.0.0', port=8080, debug=True)
