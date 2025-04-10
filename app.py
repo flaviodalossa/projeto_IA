@@ -31,7 +31,7 @@ def limpar_string(texto):
 
 def filter_row(row):
     """Remove do dicionário da linha as colunas indesejadas."""
-    keys_to_exclude = {'termos_pesquisa_puros', 'termos_pesquisa'}
+    keys_to_exclude = {'termos_pesquisa_puros'}
     return {key: value for key, value in row.items() if key not in keys_to_exclude}
 
 # URL de download direto do CSV "tuss_rol.csv"
