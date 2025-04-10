@@ -31,11 +31,13 @@ def limpar_string(texto):
 
 def filter_row(row):
     """Remove do dicionário da linha as colunas indesejadas."""
-    keys_to_exclude = {'TUSS_x', 'procedimento_x', 'sinonimo', 'subgrupo_x'}
+    keys_to_exclude = {'termos_pesquisa_puros', 'termos_pesquisa'}
     return {key: value for key, value in row.items() if key not in keys_to_exclude}
 
 # URL de download direto do CSV "tuss_rol.csv"
-CSV_URL = "https://drive.google.com/uc?export=download&id=1oe4yPNRzNPzh71DnWSeQGEaafjscuWue"
+# CSV_URL = "https://drive.google.com/uc?export=download&id=1oe4yPNRzNPzh71DnWSeQGEaafjscuWue"
+CSV_URL = "https://drive.google.com/uc?export=download&id=1ThZUbTiLait6rMo9TiNv62O_RYLchQWk"
+
 
 app = Flask(__name__)
 CORS(app)
