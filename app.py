@@ -5,6 +5,7 @@ from io import StringIO
 import re
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from itertools import combinations  # para gerar combinações de palavras
 
 def limpar_string(texto):
     # Converte para caixa baixa
@@ -43,7 +44,7 @@ CORS(app)
 # Variáveis globais para os dados e índices
 df_tuss = None
 index_codigo = {}    # Índice para busca por código
-lista_termos = []    # Lista de registros para busca por termos
+lista_termos = []    # Lista de registros para busca por termos (já processados)
 
 def carregar_dados():
     """Faz o download do CSV, carrega os dados e converte a coluna 'codigo' para string sem espaços extras."""
@@ -98,11 +99,31 @@ def construir_indices():
         print("Erro ao construir índice por 'termos_pesquisa':", e)
         raise
 
+def search_exact(query_list):
+    """
+    Realiza a busca com correspondência exata: o registro é considerado _match_
+    se, ao dividir a string dos termos (por espaços), contiver todas as palavras em query_list.
+    """
+    results = []
+    for row in lista_termos:
+        termos_db = row.get('termos_pesquisa', "")
+        if not isinstance(termos_db, str):
+            continue
+        palavras = termos_db.split()
+        # Confere se cada palavra na query está presente de forma exata
+        if all(q in palavras for q in query_list):
+            results.append(filter_row(row))
+    return results
+
 def buscar_informacoes(valor_busca: str) -> dict:
     """
     Realiza a busca:
       - Se valor_busca for um número de 8 dígitos, procura pelo código.
-      - Caso contrário, normaliza a string de busca e compara com 'termos_pesquisa'.
+      - Caso contrário, aplica a normalização dos termos e tenta:
+          1. Busca com correspondência exata para TODOS os termos da expressão.
+          2. Se não houver resultados, realiza buscas progressivas combinando o primeiro termo com
+             combinações dos demais (do tamanho máximo até 1). Na primeira rodada em que há resultados,
+             retorna todos os resultados dessa rodada sem prosseguir para combinações menores.
     """
     valor_busca = valor_busca.strip()
     if not valor_busca:
@@ -114,22 +135,43 @@ def buscar_informacoes(valor_busca: str) -> dict:
             resultado = [filter_row(row) for row in index_codigo[valor_busca]]
             return {"resultado": resultado}
         else:
-            return {}
+            return {"resultado": []}
     else:
-        # Normaliza a consulta e monta a lista de palavras
+        # Normaliza a consulta e obtém as palavras
         termo_processado = limpar_string(valor_busca)
         query_words = termo_processado.split()
-        print(f"Buscando por termos processados: {query_words}")
+        print("Buscando por termos processados:", query_words)
         print("Total de registros para busca:", len(lista_termos))
-        resultado = []
-        for row in lista_termos:
-            # Busca comparando com a coluna que já está processada
-            termos_db = row.get('termos_pesquisa', "")
-            if not isinstance(termos_db, str):
-                continue
-            if all(word in termos_db for word in query_words):
-                resultado.append(filter_row(row))
-        return {"resultado": resultado}
+        
+        # Se houver apenas uma palavra, pesquisa diretamente
+        if len(query_words) == 1:
+            resultado = search_exact(query_words)
+            return {"resultado": resultado}
+        
+        # Busca 1: tenta com todos os termos (correspondência exata de cada palavra)
+        resultado_full = search_exact(query_words)
+        if resultado_full:
+            return {"resultado": resultado_full}
+        
+        # Se não houver resultado, tenta combinações menores mantendo a primeira palavra como obrigatória.
+        first = query_words[0]
+        rest = query_words[1:]
+        # Itera do tamanho máximo (len(rest)) até 1
+        for r in range(len(rest), 0, -1):
+            level_results = []
+            # Gera todas as combinações de 'rest' com tamanho r
+            for comb in combinations(rest, r):
+                test_query = [first] + list(comb)
+                print("Tentando combinação:", test_query)
+                matches = search_exact(test_query)
+                if matches:
+                    level_results.extend(matches)
+            if level_results:
+                # Se nessa rodada (nível de combinação) obtivermos resultados, retornamos e não prosseguimos
+                return {"resultado": level_results}
+        
+        # Se nenhuma combinação produzir resultado, retorna resultado vazio.
+        return {"resultado": []}
 
 # Inicializa o carregamento dos dados e construção dos índices
 try:
@@ -164,4 +206,5 @@ def buscar():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port, debug=True)
+
 
