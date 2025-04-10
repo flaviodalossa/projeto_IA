@@ -53,7 +53,8 @@ def carregar_dados():
         response = requests.get(CSV_URL)
         response.raise_for_status()  # dispara exceção em caso de erro
         data_str = response.content.decode('utf-8')
-        df_tuss = pd.read_csv(StringIO(data_str), sep=',', encoding='utf-8')
+        # Alteração: usar separador ';'
+        df_tuss = pd.read_csv(StringIO(data_str), sep=';', encoding='utf-8')
         df_tuss.fillna("", inplace=True)
         
         # Log das colunas e algumas linhas iniciais para debug
@@ -70,6 +71,7 @@ def carregar_dados():
     except Exception as e:
         print("Erro ao baixar ou carregar CSV:", e)
         raise
+
 
 def construir_indices():
     """
