@@ -36,7 +36,9 @@ def filter_row(row):
     return {key: value for key, value in row.items() if key not in keys_to_exclude}
 
 # URL de download direto do CSV
+# CSV_URL = "https://drive.google.com/uc?export=download&id=1ThZUbTiLait6rMo9TiNv62O_RYLchQWk"
 CSV_URL = "https://drive.google.com/uc?export=download&id=1ThZUbTiLait6rMo9TiNv62O_RYLchQWk"
+
 
 app = Flask(__name__)
 CORS(app)
