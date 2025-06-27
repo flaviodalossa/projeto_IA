@@ -152,28 +152,29 @@ def buscar_informacoes(valor_busca: str) -> dict:
     if resultado_full:
         return {"resultado": resultado_full}
 
-    # Busca pelo maior número de termos coincidentes (o primeiro termo é obrigatório)
+    # Fallback: busca pelo primeiro termo e pontua coincidências com os demais
     first, *rest = query_words
-    best_candidates = []  # lista de tuplas (count, row)
-    for row in lista_termos:
-        # extrai os termos da linha, assumindo que lista_termos contém objetos com atributo 'termos'
-        termos_linha = row.get('termos', []) if isinstance(row, dict) else limpar_string(str(row)).split()
-        if first not in termos_linha:
-            continue
-        # conta quantos dos demais termos aparecem
-        count = sum(1 for t in rest if t in termos_linha)
-        best_candidates.append((count, row))
-
-    if best_candidates:
-        # encontra o máximo de coincidências
-        max_count = max(c for c, _ in best_candidates)
-        # filtra as linhas com esse número máximo
-        resultado = [filter_row(r) for c, r in best_candidates if c == max_count]
+    # obtém todas as linhas que contenham o primeiro termo
+    initial_matches = search_exact([first])
+    if initial_matches:
+        candidates = []  # lista de tuplas (count, row)
+        for row in initial_matches:
+            # extrai o texto relevante do registro (ajuste o campo conforme seu modelo)
+            if isinstance(row, dict):
+                text = row.get('nome', '') or row.get('descricao', '')
+            else:
+                text = str(row)
+            termos_linha = limpar_string(text).split()
+            # conta quantos dos demais termos aparecem na linha
+            count = sum(1 for t in rest if t in termos_linha)
+            candidates.append((count, row))
+        # seleciona apenas os registros com o maior número de coincidências
+        max_count = max(c for c, _ in candidates)
+        resultado = [filter_row(r) for c, r in candidates if c == max_count]
         return {"resultado": resultado}
 
     # Nenhum resultado encontrado
     return {"resultado": []}
-
 
 # Inicializa o carregamento dos dados e construção dos índices
 try:
