@@ -154,7 +154,7 @@ def buscar_informacoes(valor_busca: str) -> dict:
         resultado_full = search_exact(query_words)
         if resultado_full:
             return {"resultado": resultado_full}
-        else:
+        
         # Se não houver resultado, tenta combinações menores mantendo a primeira palavra como obrigatória.
         first = query_words[0]
         rest = query_words[1:]
